@@ -5,7 +5,7 @@ function getKooliVaheajani(){
     $talv=date('20.12.2021');
     $dif=date_diff(date_create($today), date_create($talv));
     echo '<br>';
-    echo 'Talve Koolivaheaajani on '.$dif->format('%d').' päeva';
+    echo 'Talve Koolivaheaajani on '.$dif->format('%a').' päeva';
 }
 //valuse leidmine funktsioon
 function get_vanus(){

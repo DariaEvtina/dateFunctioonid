@@ -34,6 +34,9 @@
     echo getKooliVaheajani();
     ?>
 </section>
-
+<section>
+    <h2>Hooaja pilt</h2>
+    <img src="<?php GEThooaeg()?>" alt="pilt">
+</section>
 </body>
 </html>

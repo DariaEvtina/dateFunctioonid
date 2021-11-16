@@ -1,5 +1,5 @@
 <?php
-//valuse leidmine funktsioon
+//talve koolivaheniajani
 function getKooliVaheajani(){
     $today=date('d.m.Y');
     $talv=date('20.12.2021');
@@ -7,7 +7,7 @@ function getKooliVaheajani(){
     echo '<br>';
     echo 'Talve Koolivaheaajani on '.$dif->format('%d').' päeva';
 }
-
+//valuse leidmine funktsioon
 function get_vanus(){
     echo '<form method="post" action="">';
     echo 'palun sinu sünnipäev:';
@@ -20,6 +20,38 @@ function get_vanus(){
         echo '<br>';
         echo $diff->format('%y').'aastat vana';
     }
+}
+function GEThooaeg(){
+    //vastavalt tänasse kuupäeva naitab hooaja pilti
+    //piltide massive
+    $pildit=array(
+        "sygis"=>"pildit/sygis.png",
+        "talv"=>"pildit/talv.png",
+        "kevad"=>"pildit/kevad.png",
+        "suvi"=>"pildit/suvi.png"
+    );
+    $paev=date("z");
+    //sygis
+    $sygis_algus=date("z", strtotime("September 1"));
+    $sygis_loop=date("z", strtotime("November 30"));
+    //talv
+    $talv_algus=date("z", strtotime("December 1"));
+    $talv_loop=date("z", strtotime("February 28"));
+    //kevad
+    $kevad_algus=date("z", strtotime("Mart 1"));
+    $kevad_loop=date("z", strtotime("May 31"));
+    //suvi
+    if($paev>=$sygis_algus && $paev<=$sygis_loop):
+        $hoooaeg="sygis";
+    elseif($paev>=$talv_algus && $paev<=$talv_loop):
+        $hoooaeg="talv";
+    elseif($paev>=$kevad_algus && $paev<=$kevad_loop):
+        $hoooaeg="kevad";
+    else:
+        $hoooaeg="suvi";
+    endif;
+    $hooaegpilt=$pildit[$hoooaeg];
+    echo $hooaegpilt;
 }
 ?>
 
